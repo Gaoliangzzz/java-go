@@ -1,0 +1,49 @@
+//未属性的封装
+public class test1{
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		p1.name = "哈哈";
+		p1.age = 20;
+		p1.say();
+//		System.out.println("我的名字是"+p1.name+"，我今年"+p1.age+"岁。");//输出    我的名字是哈哈，我今年20岁。
+	}
+}
+class Person {
+	String name;
+	int age;
+	public void say() {
+		System.out.println("我的名字是"+name+"，我今年"+age+"岁。");//输出   我的名字是哈哈，我今年20岁。
+	}
+
+}
+/*---------------------------
+公有的属性和方法可以被类外的其他类访问，要想访问私有的属性，要有公有的方法间接访问
+这里 p1.setName("hhh"): 是调用setName函数，传参，然后将参数 hhh  赋值给this.name，这个this.name就是p1的name属性。
+
+*/---------------------------
+//封装的属性
+public class test1{
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		p1.setName("hhh");
+		p1.setAge(21);
+		System.out.println("我叫"+p1.getName()+",我今年"+p1.getAge()+"岁了。");//输出    我叫hhh,我今年21岁了。
+	}
+}
+class Person{
+	private String name;
+	private int age;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+}
