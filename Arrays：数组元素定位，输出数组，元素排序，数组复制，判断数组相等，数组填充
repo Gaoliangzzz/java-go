@@ -1,0 +1,34 @@
+public class test1{
+	public static void main(String[] args) {
+		int nums[] = {1,2,3,4,5};
+		
+		//二分查找：输出要查找数的下标
+//		int index = Arrays.binarySearch(nums, 4);
+//		System.out.println("找到的下标是"+index);
+		//直接输出数组
+//		System.out.println(Arrays.toString(nums));
+		//排序,采用快速排序
+		int nums2[] = {4,2,6,8,1,3};
+//		Arrays.sort(nums2);
+//		System.out.println(Arrays.toString(nums2));
+		//数组复制
+		int nums3[] = Arrays.copyOf(nums, 5);
+		System.out.println(Arrays.toString(nums3));
+		int nums4[] = Arrays.copyOf(nums, 3);
+		System.out.println(Arrays.toString(nums4));
+		int nums5[] = Arrays.copyOfRange(nums2, 2, 4);//截取复制输出【6，8】
+		System.out.println(Arrays.toString(nums5));
+    //system.arraycopy方法的数组复制
+		int nums6[] = new int[nums.length];//数组长度
+		System.arraycopy(nums, 0, nums6, 0, nums.length-1);//被复制数组起始位置，复制数组起始位置，复制的长度
+		System.out.println(Arrays.toString(nums6));
+		/*小结：三种数组复制的效率
+		 *有高到低：system.arraycopy > arrays.copyOf > for循环打印 
+		 */
+		//判断两个数组是否相等
+		System.out.println(Arrays.equals(nums, nums3));//输出true false
+		//数组填充
+		Arrays.fill(nums6, 0);
+    System.out.println(Arrays.toString(nums6));//输出[0,0,0,0,0]
+	}
+}
