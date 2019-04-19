@@ -1,0 +1,25 @@
+public class test1{
+	public static void main(String[] args) {
+		horse h = null;
+		h = new horse();
+		h.age = 20;
+		h.name = "赤兔马";
+		h.run();
+//		h.eat();
+		h = null;//把对象释放
+		//匿名对象，只能使用一次，用完后，该对象被释放
+		new horse().eat();
+	}
+}
+class horse{ //如果定义 public class horse 必须定义在一个单独的新的文件
+	static String name;
+	static int age;
+	public static void eat() {
+		System.out.println("我能吃");
+	}
+	public static void run() {
+		System.out.println("我叫"+name+",我"+age+"了。我能日行千里");
+	}
+}
+//new关键字：创建一个对象，实例化一个对象，申请内存空间
+//如果没有申请内存空间，就会报空指针异常的错：java.lang.NullPointerException
