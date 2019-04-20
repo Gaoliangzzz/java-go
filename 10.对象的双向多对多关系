@@ -1,0 +1,75 @@
+public class test1{
+	public static void main(String[] args) {
+		Hero hero = new Hero("刘备",30);
+		Weapon weapon = new Weapon("双股剑",1);
+		
+		//关联两个对象
+		hero.setWeapon(weapon);
+		weapon.setHero(hero);
+		
+		//输出结果  :  我叫刘备,我30岁了.我用双股剑,他的等级是1级.
+		System.out.println("我叫"+hero.getName()+",我"+hero.getAge()+"岁了.我用"+weapon.getName()+",他的等级是"+weapon.getGrade()+"级.");
+	}
+}
+class Hero{
+	private String name;
+	private int age;
+	private Weapon weapon;//英雄到兵器的一对一关系
+	
+	public Hero() {}
+	public Hero(String name,int age) {//构造方法
+		this.name = name;
+		this.age = age;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public Weapon getWeapon() {
+		return weapon;
+	}
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+	
+}
+class Weapon{
+	private String name;
+	private int grade;
+	private Hero hero;//武器到英雄的一对一关系
+	
+	public Weapon() {}
+	public Weapon(String name,int grade) {//构造方法
+		this.name = name;
+		this.grade = grade;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public Hero getHero() {
+		return hero;
+	}
+	public void setHero(Hero hero) {
+		this.hero = hero;
+	}
+	
+}
