@@ -1,0 +1,53 @@
+引用传递，传入对象，是传入对象的地址。对象传参相当与对象赋值，就相当于d对象赋值到duck对象，改变一个对象的值，另一个对象的值也改变
+public class test1{
+	public static void main(String[] args) {
+		Duck d = new Duck();
+		method(d);//引用传递，传入对象，是传入对象的地址。对象传参相当与对象赋值，就相当于d对象赋值到duck对象，改变一个对象的值，另一个对象的值也改变
+		//当传入的是变量的时候,就是值传递，调用相应的函数不会改变变量的值
+//		int x = 2;
+//		method(x);
+		System.out.println("Duck age:"+d.age);//输出  5  
+	}
+	public static void method(Duck duck) {
+		duck.age = 5;
+	}
+}
+class Duck{
+	int age = 2;
+}
+
+//另一个情况，string类型引用传递，也就是string类型传参
+//string类型的引用传递
+/*-------------------
+ * 因为string本身就是一个对象
+ * 所以在执行sname = "嘻嘻";时
+ * 有重新定义了一个对象，指向一个新的地址，并赋值为"嘻嘻"
+ * 以此并没有改变之前name的值
+----------------------*/
+/*
+public class test1{
+	public static void main(String[] args) {
+		String name = "哈哈";
+		method(name);
+		System.out.println("name:"+name);     //输出    name:哈哈
+	}
+	public static void method(String sname) {
+		sname = "嘻嘻";
+	}
+}
+*/
+
+//string正确的值引用
+public class test1{
+	public static void main(String[] args) {
+		Person p = new Person();
+		method(p);
+		System.out.println(p.name);          //输出   嘻嘻
+	}
+	public static void method(Person per) {
+		per.name = "嘻嘻";
+	}
+}
+class Person{
+	String name = "哈哈";
+}
