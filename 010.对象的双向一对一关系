@@ -1,3 +1,4 @@
+//对象的一对一关系,双向多对多关系
 public class test1{
 	public static void main(String[] args) {
 		Hero hero = new Hero("刘备",30);
@@ -7,8 +8,23 @@ public class test1{
 		hero.setWeapon(weapon);
 		weapon.setHero(hero);
 		
-		//输出结果  :  我叫刘备,我30岁了.我用双股剑,他的等级是1级.
-		System.out.println("我叫"+hero.getName()+",我"+hero.getAge()+"岁了.我用"+weapon.getName()+",他的等级是"+weapon.getGrade()+"级.");
+//		System.out.println("我叫"+hero.getName()+",我"+hero.getAge()+"岁了.我用"+weapon.getName()+",他的等级是"+weapon.getGrade()+"级.");
+//		输出结果：我叫刘备,我30岁了.我用双股剑,他的等级是1级.
+
+//		通过英雄获得武器信息
+		String name = hero.getName();
+		int age = hero.getAge();
+		Weapon w = hero.getWeapon();
+		System.out.println("我叫"+name+",我"+age+"岁了.我用"+w.getName()+",他的等级是"+w.getGrade()+"级.");
+//		输出结果：我叫刘备,我30岁了.我用双股剑,他的等级是1级.
+
+//		通过武器获得英雄信息
+		String name1 = weapon.getName();
+		int grade = weapon.getGrade();
+		Hero h = weapon.getHero();
+		System.out.println("我叫"+h.getName()+",我"+h.getAge()+"岁了.我用"+name1+",他的等级是"+grade+"级.");
+//		输出结果：我叫刘备,我30岁了.我用双股剑,他的等级是1级.
+
 	}
 }
 class Hero{
@@ -17,7 +33,7 @@ class Hero{
 	private Weapon weapon;//英雄到兵器的一对一关系
 	
 	public Hero() {}
-	public Hero(String name,int age) {//构造方法
+	public Hero(String name,int age) {
 		this.name = name;
 		this.age = age;
 	}
@@ -48,7 +64,7 @@ class Weapon{
 	private Hero hero;//武器到英雄的一对一关系
 	
 	public Weapon() {}
-	public Weapon(String name,int grade) {//构造方法
+	public Weapon(String name,int grade) {
 		this.name = name;
 		this.grade = grade;
 	}
