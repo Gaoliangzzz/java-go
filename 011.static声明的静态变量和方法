@@ -1,0 +1,129 @@
+//未使用static声明变量
+/*public class test1{
+	public static void main(String[] args) {
+		Person p1 = new Person("刘备",30);//不写构造方法会标红
+		Person p2 = new Person("关羽",30);//不写构造方法会标红
+		Person p3 = new Person("张飞",30);//不写构造方法会标红
+
+		System.out.println(p1.getInfo());
+		System.out.println(p2.getInfo());
+		System.out.println(p3.getInfo());
+
+	}
+}
+class Person{
+	private String name;
+	private int age;
+	
+	public Person() {}
+	public Person(String name,int age) {
+		this.name = name;
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public String getInfo() {
+		return "我叫"+name+",我今年"+age+"岁了。";
+	}
+}*/
+
+/*
+//使用static声明变量，static声明的为全局变量，不属于对象，依赖类，生命周期从类被加载一直到程序结束
+public class test1{
+	public static void main(String[] args) {
+		Person p1 = new Person("刘备");//不写构造方法会标红
+		Person p2 = new Person("关羽");//不写构造方法会标红
+		Person p3 = new Person("张飞");//不写构造方法会标红
+
+		System.out.println(p1.getInfo());//输出   我叫刘备,我今年30岁了。
+		System.out.println(p2.getInfo());//输出   我叫关羽,我今年30岁了。
+		System.out.println(p3.getInfo());//输出   我叫张飞,我今年30岁了。
+		
+		System.out.println(Person.age);  //输出  30  使用类名调用静态变量
+
+	}
+}
+class Person{
+	private String name;
+	static int age = 30;//相同属性用static声明可以节省，堆区内存，使用静态方法区的空间，静态变量是所有对象共享，为了显示是静态便令，要用类名调用变量
+						//不用写get set方法
+	public Person() {}
+	public Person(String name) {
+		this.name = name;
+	}
+//	public Person(String name,int age) {
+//		this.name = name;
+//		this.age = age;
+//	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+//静态变量不用写get set方法
+//	public int getAge() {
+//		return age;
+//	}
+//	public void setAge(int age) {
+//		this.age = age;
+//	}
+
+	
+	public String getInfo() {
+		return "我叫"+name+",我今年"+age+"岁了。";
+	}
+}
+*/
+/*
+//静态方法不能访问非静态属性和方法，只能访问静态，也是通过类名的方式调用，静态方法也不属于对象
+public class test1{
+	public static void main(String[] args) {
+		Person p1 = new Person("刘备");//不写构造方法会标红
+		Person p2 = new Person("关羽");//不写构造方法会标红
+		Person p3 = new Person("张飞");//不写构造方法会标红
+
+		System.out.println(p1.getInfo());//输出   我叫刘备,我今年30岁了。
+		System.out.println(p2.getInfo());//输出   我叫关羽,我今年30岁了。
+		System.out.println(p3.getInfo());//输出   我叫张飞,我今年30岁了。
+		
+		System.out.println(Person.age);  //输出  30  使用类名调用静态变量
+
+	}
+}
+class Person{
+	private String name;
+	static int age = 30;
+	
+	public Person() {}
+	public Person(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	//静态方法访问静态的属性，也是通过类名的方式调用，静态方法也不属于对象
+	public static void setAge(int age) {
+		Person.age = age;                 //用类名调用
+	}
+	public String getInfo() {
+		return "我叫"+name+",我今年"+age+"岁了。";
+	}
+}
+*/
