@@ -3,6 +3,7 @@
 //2.声明一个本类   静态  对象，
 //3.给外部提供一个  公共的  静态方法  ,静态方法的返回值类型是本类名，获取对象实例
 //4.两种单例模式：饿汉式和懒汉式
+//5.饿汉式的对象的生命周期时间比较长
 public class test1{
 	public static void main(String[] args) {
 //		Singleton1 s = new Singleton1();//因为构造方法被私有化，所以不能在别的类直接new出一个对象
@@ -25,7 +26,7 @@ class Singleton1{
 		System.out.println("执行其他方法");
 	}
 }
-//懒汉式
+//懒汉式，用的比较多，比如  延迟加载
 class Singleton2{
 	private Singleton2() {}//私有构造方法
 	static Singleton2 s2;
