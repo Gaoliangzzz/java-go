@@ -1,0 +1,41 @@
+//单例设计模式
+//1.构造方法私有化，防止有类外部在new 一个新的对象
+//2.声明一个本类   静态  对象，
+//3.给外部提供一个  公共的  静态方法  ,静态方法的返回值类型是本类名，获取对象实例
+//4.两种单例模式：饿汉式和懒汉式
+public class test1{
+	public static void main(String[] args) {
+//		Singleton1 s = new Singleton1();//因为构造方法被私有化，所以不能在别的类直接new出一个对象
+		//只能通过公共的返回实例的方法获得这个对象
+		Singleton1 s = Singleton1.getInstance();//用类名调用获取实例的方法！！！       所以getInstance()要是静态方法，所以本类对象要静态！！！
+		s.print();//   成功输出
+		
+		Singleton2 ss = Singleton2.getInstance();
+		ss.print();//  成功输出
+	}
+}
+//饿汉式
+class Singleton1{
+	private Singleton1() {}//私有构造方法
+	static Singleton1 s1 = new Singleton1();
+	public static Singleton1 getInstance() {//静态方法和对象互相调用时，要求对象和方法都是静态的才行！！！
+		return s1;
+	}
+	public void print() {
+		System.out.println("执行其他方法");
+	}
+}
+//懒汉式
+class Singleton2{
+	private Singleton2() {}//私有构造方法
+	static Singleton2 s2;
+	public static Singleton2 getInstance() {
+		if(s2 == null) {
+			s2 = new Singleton2();
+		}
+		return s2;
+	}
+	public void print() {
+		System.out.println("完成调用");
+	}
+}
