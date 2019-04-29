@@ -1,0 +1,120 @@
+//对象数组
+public class test1{
+	public static void main(String[] args) {
+		Manager m = new Manager(5);
+		m.add(new Cat("狸花猫",3,1));//new一个Cat类型的对象，并初始化,并且传参到add函数
+		m.add(new Cat("折耳猫",3,2));
+		m.add(new Cat("布偶猫",3,3));
+		m.add(new Cat("英短猫",3,4));
+		m.add(new Cat("美短猫",3,5));
+		m.add(new Cat("波斯猫",3,6));
+		m.add(new Cat("加菲猫",3,7));
+
+//		System.out.println(m.len());
+//		输出10 ，说明数组以扩充
+		
+		//查找一个
+//		Cat c = m.search(6);
+//		c.print();
+//		输出   My name is 波斯猫, num is 6, age is 3
+		
+		//输出所有
+//		m.print();
+		
+		//更新
+		m.update(new Cat("大橘猫",3,1));
+		m.print();
+//		输出  My name is 大橘猫, num is 1, age is 3
+	}
+}
+//管理类（增删改查）
+class Manager{
+	private Cat cat[] = null;
+	private int count = 0;//记录数组下标与元素个数
+	
+	public Manager(int size) {
+		if(size>0) {
+			cat = new Cat[size];
+		}else {
+			cat = new Cat[5];
+		}
+	}
+	//增加
+	public void add(Cat c) {//new了一个 c 的Cat对象，然后当作参数
+		if(count>=cat.length) {//数组已满，要扩充
+			//动态数组，数组扩充方法
+			//1.扩充原来一半，向上取整
+			
+			//2.扩充一倍
+			int newLen = cat.length*2;
+			cat = Arrays.copyOf(cat, newLen);//Arrays.copyOf 的用法是  复制一个数组，新数组长度
+			
+		}
+		cat[count++] = c;//先存count元素，在count++
+	}
+	//删除
+	public void delete() {}
+	//修改
+	public void update(Cat c) {
+		Cat temp = search(c.getId());
+		if(temp!=null) {
+			temp.setAge(c.getAge());
+			temp.setName(c.getName());
+		}
+	}
+	//查找
+	public Cat search(int id) {
+		for(int i=0;i<count;i++) {
+			if(cat[i].getId()==id) {
+				return cat[i];
+			}
+		}
+		return null;
+	}
+	//输出
+	public void print() {
+		for(int i=0;i<count;i++) {
+			cat[i].print();
+		}
+		
+	}
+	public int len() {
+		return cat.length;
+	}
+}
+//数据对象类
+class Cat{
+	private String name;
+	private int age;
+	private int id;
+	
+	public Cat() {}
+	public Cat(String name,int age,int id) {
+		this.name = name;
+		this.age = age;
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void print() {
+		System.out.println("My name is "+name+", num is "+id+", age is "+age);
+	}
+}
