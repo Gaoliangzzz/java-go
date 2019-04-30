@@ -22,9 +22,13 @@ public class test1{
 //		m.print();
 		
 		//更新
-		m.update(new Cat("大橘猫",3,1));
-		m.print();
+//		m.update(new Cat("大橘猫",3,1));
+//		m.print();
 //		输出  My name is 大橘猫, num is 1, age is 3
+		
+		//删除
+//		m.delete(3);
+//		m.print();
 	}
 }
 //管理类（增删改查）
@@ -53,7 +57,18 @@ class Manager{
 		cat[count++] = c;//先存count元素，在count++
 	}
 	//删除
-	public void delete() {}
+	public void delete(int id) {
+		for(int i=0;i<count;i++) {
+			if(id == cat[i].getId()) {
+				for(int j=i;j<count;j++) {
+					cat[j]=cat[j+1];
+				}
+				cat[count-1]=null;
+				count--;
+				break;
+			}
+		}
+	}
 	//修改
 	public void update(Cat c) {
 		Cat temp = search(c.getId());
