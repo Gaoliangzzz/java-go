@@ -67,4 +67,38 @@ class SingDog extends Dog{
 		System.out.println(name+",我想搞对象,我年纪"+age);
 	}
 }
+//方法重写
+//1.重写的两个方法的返回值，方法名，参数列表必须完全一致
+//2.子类抛出的异常不能超过父类相应方法抛出的异常
+//3.子类方法的访问级别不能低于父类响应方法的访问级别
+//4.父类的方法被private static final 修饰，则不能被子类重写
+public class test1{
+	public static void main(String[] args) {
+		SingDog sd = new SingDog();
+		sd.print();  //输出： 狗狗我想搞对象
+	}
+}
+class Dog{
+	protected String name;
+	private int age;
+	public void eat() {
+		System.out.println("我想吃狗粮");
+	}
+}
+class Husky extends Dog{
+	public void print() {
+		System.out.println(name+",我想拆家");
+	}
+	public void eat() {//父类方法重写
+		System.out.println("哈士奇想吃狗粮");
+	}
+}
+class SingDog extends Dog{
+	public void print() {
+		System.out.println(name+",我想搞对象");
+	}
+	public void eat() {//父类方法重写
+		System.out.println("单身狗不想吃狗粮");
+	}
+}
 */
