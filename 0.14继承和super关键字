@@ -1,0 +1,70 @@
+//继承
+//1.只能继承非私有的属性和方法
+//2.构造方法不能被继承
+//3.创建子类对象的时候，父类的默认构造方法也会被调用，因为子类要用到父类的数据，要用到父类的构造方法初始化数据
+//4.创建子类对象会调用构造方法，也会调用父类的构造方法，但是不会创建父类的对象
+//5.实例化子类对象，会先调用父类的构造方法，如果父类中没有默认的构造方法，那么子类必须通过显示的super()来调用父类的带参构造方法，super也只能在子类构造方法的第一句
+/*
+public class test1{
+	public static void main(String[] args) {
+		SingDog sd = new SingDog();
+		sd.print();  //输出： 狗狗我想搞对象
+	}
+}
+class Dog{
+	protected String name = "狗狗";
+	private int age;
+	public void eat() {
+		System.out.println("我想吃狗粮");
+	}
+}
+class Husky extends Dog{
+	public void print() {
+		System.out.println(name+",我想拆家");
+	}
+}
+class SingDog extends Dog{
+	public void print() {
+		System.out.println(name+",我想搞对象");
+	}
+}
+*/
+//5.实例化子类对象，会先调用父类的构造方法，如果父类中没有默认的构造方法，那么子类必须通过显示的super()来调用父类的带参构造方法，super也只能在子类构造方法的第一句
+/*
+public class test1{
+	public static void main(String[] args) {
+		SingDog sd = new SingDog();
+		sd.print();  //输出： 单身狗,我想搞对象,我年纪2
+		
+		Husky husky = new Husky("哈士奇");
+		husky.print();//输出  哈士奇,我想拆家，年纪3
+	}
+}
+class Dog{
+	protected String name;
+	protected int age;
+	public Dog(String name,int age) {
+		this.name = name;
+		this.age = age;
+	}
+	public void eat() {
+		System.out.println("我想吃狗粮");
+	}
+}
+class Husky extends Dog{
+	public Husky(String name) {
+		super(name,3);//只能在第一句位置
+	}
+	public void print() {
+		System.out.println(name+",我想拆家,年纪"+age);
+	}
+}
+class SingDog extends Dog{
+	public SingDog() {
+		super("单身狗",2);//只能在第一句位置
+	}
+	public void print() {
+		System.out.println(name+",我想搞对象,我年纪"+age);
+	}
+}
+*/
