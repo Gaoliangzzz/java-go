@@ -1,0 +1,142 @@
+//继承的应用实例
+/*此方法不能正确输出冒泡排序的结果
+public class test1{
+	public static void main(String[] args) {
+		CosmeticManager cm = new CosmeticManager();
+		cm.add(new Cosmetic("香奈儿","外国",1000));
+		cm.add(new Cosmetic("迪奥~","外国",700));
+		cm.add(new Cosmetic("圣罗兰","外国",800));
+		cm.add(new Cosmetic("资生堂","外国",100));
+		cm.add(new Cosmetic("欧莱雅","外国",100));
+		cm.add(new Cosmetic("妮维雅","外国",100));
+		cm.add(new Cosmetic("自然堂","国产",50));
+		cm.add(new Cosmetic("一叶子","国产",50));
+		//直接输出所有
+//		cm.printAll();
+		//排序输出所有
+		OrderCosmeticManager order = new OrderCosmeticManager();
+		order.printAll();
+	}
+}*/
+public class test1{
+	public static void main(String[] args) {
+		OrderCosmeticManager ocm = new OrderCosmeticManager();
+		ocm.add(new Cosmetic("香奈儿","外国",1000));//将对象存到OrderCosmeticManager类的cs数组里，CosmeticManager类的cs数组里没有对象
+		ocm.add(new Cosmetic("迪奥~","外国",700));
+		ocm.add(new Cosmetic("圣罗兰","外国",800));
+		ocm.add(new Cosmetic("资生堂","外国",100));
+		ocm.add(new Cosmetic("欧莱雅","外国",100));
+		ocm.add(new Cosmetic("妮维雅","外国",100));
+		ocm.add(new Cosmetic("自然堂","国产",50));
+		ocm.add(new Cosmetic("一叶子","国产",50));
+		ocm.printAll();
+		//直接输出所有
+//		cm.printAll();
+		//排序输出所有
+//		OrderCosmeticManager order = new OrderCosmeticManager();
+//		order.printAll();
+		SortCosmeticManager scm = new SortCosmeticManager();
+		scm.add(new Cosmetic("香奈儿","外国",1000));//将对象存到SortCosmeticManager类的cs数组里，SortCosmeticManager类的cs数组里没有对象
+		scm.add(new Cosmetic("迪奥~","外国",700));
+		scm.add(new Cosmetic("圣罗兰","外国",800));
+		scm.add(new Cosmetic("资生堂","外国",100));
+		scm.add(new Cosmetic("欧莱雅","外国",100));
+		scm.add(new Cosmetic("妮维雅","外国",100));
+		scm.add(new Cosmetic("自然堂","国产",50));
+		scm.add(new Cosmetic("一叶子","国产",50));
+		scm.print();
+	}
+}
+//将化妆品分类
+class SortCosmeticManager extends CosmeticManager{
+	public void print() {
+		System.out.println(cs.length);//输出 8
+		for(int i=0;i<count;i++) {
+			//比较字符串的值是否相等，不要用==(比较的是地址)，用equals()方法，比较string的值是否相等
+			if("国产".equals(cs[i].getType())) {//注意equals()的用法
+				System.out.println(cs[i].getInfo());
+			}
+		}
+		for(int i=0;i<count;i++) {
+			//比较字符串的值是否相等，不要用==(比较的是地址)，用equals()方法，比较string的值是否相等
+			if("外国".equals(cs[i].getType())) {//注意equals()的用法
+				System.out.println(cs[i].getInfo());
+			}
+		}
+	}
+}
+//按价格的顺序输出商品
+class OrderCosmeticManager extends CosmeticManager{
+	public void printAll() {//父类方法重写
+		Cosmetic[] temp = Arrays.copyOf(cs, count);
+		Cosmetic c = null;
+		System.out.println(temp.length);
+		for(int i=0;i<temp.length-1;i++) {//冒泡排序,从小到大排序
+			for(int j=0;j<temp.length-i-1;j++) {
+				if(temp[j].getPrice()>temp[j+1].getPrice()) {
+//					temp[j] = temp[j+1]+temp[j];  //报错：The operator + is undefined for the argument type(s) Cosmetic
+					//使用第三变量交换值
+					c = temp[j];
+					temp[j] = temp[j+1];
+					temp[j+1] = c;
+				}
+			}
+		}
+		//输出数组
+		for(Cosmetic cosmetic:temp) {
+			System.out.println(cosmetic.getInfo());
+		}
+	}
+}
+//化妆品管理类
+class CosmeticManager{
+	protected Cosmetic[] cs = new Cosmetic[4];
+	protected int count = 0;
+	//进货
+	public void add(Cosmetic c) {
+		if(count>=cs.length) {
+			int newLen = cs.length*2;
+			cs = Arrays.copyOf(cs, newLen);
+		}
+		cs[count++] = c;
+	}
+	public void printAll() {
+		for(int i=0;i<count;i++) {
+			System.out.println(cs[i].getInfo());//不打印，说明cs数组没有存对象
+		}
+//		System.out.println(cs.length);//输出 4  
+
+	}
+}
+//化妆品类
+class Cosmetic{
+	private String name;
+	private String type;
+	private int price;
+	public Cosmetic(String name,String type,int price) {
+		this.name = name;
+		this.type = type;
+		this.price = price;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getInfo() {
+		return "name="+name+"type="+type+"price="+price;
+	}
+}
