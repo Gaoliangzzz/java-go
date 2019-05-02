@@ -1,0 +1,102 @@
+函数重载，函数名一样，参数不一样，根据参数选择要调用的函数
+
+//foreach循环
+for(int x:nums) {
+			System.out.println(x);
+}
+
+//可变参数练习
+public class test1{
+	public static void main(String[] args) {
+	int nums[] = {1,2,3,4,5};
+		print1(nums);
+		print2(1,2,3,4,5);
+	}
+	public static void print1(int x[]) {
+		int len = x.length;
+		for(int i=0;i<len;i++) {
+			System.out.println(x[i]);//输出1，2，3，4，5
+		}
+	}
+	public static void print2(int...x) {
+//		int len = x.length;
+		for(int i:x) {
+			System.out.println(x[i-1]);//输出1，2，3，4，5
+//			System.out.println(x.length);
+		}
+	}
+}
+
+//变量交换方式
+nums[j] = nums[j] + nums[j+1];
+nums[j+1] = nums[j] - nums[j+1];
+nums[j] = nums[j] - nums[j+1];
+
+//arrays的应用
+//二分查找
+//		int index = Arrays.binarySearch(nums, 4);
+//		System.out.println("找到的下标是"+index);
+		//直接输出数组
+//		System.out.println(Arrays.toString(nums));
+		//排序,采用快速排序
+		int nums2[] = {4,2,6,8,1,3};
+//		Arrays.sort(nums2);
+//		System.out.println(Arrays.toString(nums2));
+		//数组复制
+		int nums3[] = Arrays.copyOf(nums, 5);
+		System.out.println(Arrays.toString(nums3));
+		int nums4[] = Arrays.copyOf(nums, 3);
+		System.out.println(Arrays.toString(nums4));
+		int nums5[] = Arrays.copyOfRange(nums2, 2, 4);
+		System.out.println(Arrays.toString(nums5));
+		//system.arraycopy方法的数组复制
+		int nums6[] = new int[nums.length];//数组长度
+		System.arraycopy(nums, 0, nums6, 0, nums.length-1);//被复制数组起始位置，复制数组起始位置，复制的长度
+		System.out.println(Arrays.toString(nums6));
+//------小结：三种数组复制的效率---------------------------------------
+//------有高到低：system.arraycopy > arrays.copyOf > for循环打印 
+//-------------------------------------------------------------
+		//判断两个数组是否相等
+		System.out.println(Arrays.equals(nums, nums3));//输出true false
+		//数组填充
+		Arrays.fill(nums6, 0);
+		System.out.println(Arrays.toString(nums6));//输出[0,0,0,0,0]
+    
+//匿名对象
+new horse().eat();
+
+//关联两个对象，两个对象的双向一对一关系
+		hero.setWeapon(weapon);
+		weapon.setHero(hero);
+    
+//使用static声明变量，static声明的为全局变量，不属于对象，依赖类，生命周期从类被加载一直到程序结束
+//相同属性用static声明可以节省，堆区内存，使用静态方法区的空间，静态变量是所有对象共享，为了显示是静态便令，要用类名调用变量
+//静态变量不用写get set方法
+
+//单例设计模式
+//1.构造方法私有化，防止有类外部在new 一个新的对象
+//2.声明一个本类   静态  对象，
+//3.给外部提供一个  公共的  静态方法  ,静态方法的返回值类型是本类名，获取对象实例
+//4.两种单例模式：饿汉式和懒汉式
+
+//继承
+//1.只能继承非私有的属性和方法
+//2.构造方法不能被继承
+//3.创建子类对象的时候，父类的默认构造方法也会被调用，因为子类要用到父类的数据，要用到父类的构造方法初始化数据
+//4.创建子类对象会调用构造方法，也会调用父类的构造方法，但是不会创建父类的对象
+//5.实例化子类对象，会先调用父类的构造方法，如果父类中没有默认的构造方法，那么子类必须通过显示的super()来调用父类的带参构造方法，super也只能在子类构造方法的第一句
+
+//5.实例化子类对象，会先调用父类的构造方法，如果父类中没有默认的构造方法，那么子类必须通过显示的super()来调用父类的带参构造方法，super也只能在子类构造方法的第一句
+
+//方法重写
+//1.重写的两个方法的返回值，方法名，参数列表必须完全一致
+//2.子类抛出的异常不能超过父类相应方法抛出的异常
+//3.子类方法的访问级别不能低于父类响应方法的访问级别
+//4.父类的方法被private static final 修饰，则不能被子类重写
+
+//final关键字
+//1.final修饰一个变量，就成为常量，敞亮的命名规则建议使用全大写
+//2.常量必须在定义时或者在构造器（构造函数）中初始化
+//3.当一个方法被final修饰时为最终方法，可以被继承不能被重写
+//4.final修饰的类为最终类，不能被继承，通常用于定义常量类
+//5.在方法的参数中使用final，在该方法的内部不能修改参数的值
