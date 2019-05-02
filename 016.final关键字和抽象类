@@ -1,0 +1,53 @@
+/*
+//final关键字
+//1.final修饰一个变量，就成为常量，敞亮的命名规则建议使用全大写
+//2.常量必须在定义时或者在构造器（构造函数）中初始化
+//3.当一个方法被final修饰时为最终方法，可以被继承不能被重写
+//4.final修饰的类为最终类，不能被继承，通常用于定义常量类
+//5.在方法的参数中使用final，在该方法的内部不能修改参数的值
+public class test1{
+	public static void main(String[] args) {
+
+	}
+}
+//常量类(工具类)
+final class Constant{
+	public static final int PERSON_NUM = 10;//final的常量经常和static一起使用，目的是直接用类名调用常量，不用每次new一个对象使用
+
+}
+*/
+/*
+//抽象类
+//用abstract关键字声明的类就是抽象类 
+//具有相同特征和性质的类抽象出来的类叫抽象类
+//抽象方法只有声明没有实现，在子类中实现
+//继承抽象类的具体类必须实现所有的抽象方法
+//不是抽象类不能写抽象方法
+//非抽象类继承抽象类的方法不用写abstract
+//抽象类不能被实例化，不能new一个对象
+//抽象类可以没有抽象方法，但是有抽象方法的类必须是抽象类
+//抽象类可以继承抽象类，也可以不实现抽象方法
+//抽象类不能被final修饰，但是可以有构造方法
+public class test1{
+	public static void main(String[] args) {
+		Man man = new Man();
+		man.eat();
+		man.move();
+	}
+}
+abstract class Animal{
+	public abstract void move();//抽象方法只有声明，没有实现
+}
+abstract class Person extends Animal{
+	public abstract void eat();
+}
+class Man extends Person{
+	public void move() {
+		System.out.println("我是男人，我爱跑步");
+	}
+	public void eat() {
+		System.out.println("我爱吃肉");
+	}
+	
+}
+*/
