@@ -1,0 +1,52 @@
+//接口
+//1.接口只能定义  全局常量，抽象方法
+//2.接口可以多继承
+//3.接口命名尽量大写I开头,表示是接口
+//4.implements实现接口的关键字，一个类可以实现多个接口
+//5.抽象类实现接口可以不实现接口的方法
+//6.接口不能有构造方法
+//7.接口不能被实例化
+public class test1{
+	public static void main(String[] args) {
+		 Person per = new Person();
+		 per.eat();
+		 per.life();
+		 per.run();
+	}
+}
+interface IEat{//接口命名尽量大写I开头,表示是接口
+		public abstract void eat();//接口只能定义抽象方法
+//		void eat();//接口中定义抽象方法的简写方式
+		public static final int num = 10;//接口中定义常量的方法
+//		int num = 10;//接口中定义常量的简写方式
+}
+interface IRun{
+	public abstract void run();
+	public static final int speed = 30;
+}
+interface ILife extends IEat,IRun{
+	public abstract void life();
+	public static final String live = "我要生活";
+}
+class Person implements ILife{
+//	public Person() {};//构造方法无返回值，但是要大写
+
+	@Override
+	public void eat() {
+		System.out.println("我能吃");
+		
+	}
+
+	@Override
+	public void run() {
+		System.out.println("我能跑");
+
+	}
+
+	@Override
+	public void life() {
+		System.out.println("我能生活");
+		
+	}
+	
+}
