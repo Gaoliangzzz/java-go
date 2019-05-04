@@ -1,0 +1,83 @@
+//多态性
+//一般把父类定义为抽象类
+public class test1{
+	public static void main(String[] args) {
+		//1.直接调用输出
+//		PetCat pc = new PetCat("蓝白猫");
+//		pc.eat();//输出： 蓝白猫:我爱吃猫粮
+		
+//		WildCat wc = new WildCat("狸花猫");
+//		wc.eat();//输出： 蓝白猫:我爱吃猫粮
+		
+		//2.用父类的引用指向子类的对象(用大类型来表示小类型)，自动转换(向上转型)
+//		Cat c1 = new PetCat("蓝白猫");
+//		c1.eat();//输出： 蓝白猫:我爱吃猫粮
+		
+//		Cat c2 = new WildCat("狸花猫");
+//		c2.eat();//输出： 蓝白猫:我爱吃猫粮
+		
+		//3.把子类传给父类的引用，通过父类的引用传入eat方法参数，实际执行的是子类的方法
+//		Cat cc1 = new PetCat("蓝白猫");
+//		eat(cc1);//输出： 蓝白猫:我爱吃猫粮
+		
+//		Cat cc2 = new WildCat("狸花猫");
+//		eat(cc2);//输出： 蓝白猫:我爱吃猫粮
+		
+		Cat tm = new ToyCat("玩具猫");
+		eat(tm);
+	}
+
+	private static void eat(Cat c) {
+		System.out.println("猫吃饭");
+		c.eat();//子类的eat方法
+		
+		ToyCat tcc = (ToyCat)c; //强制类型转换，大的类型转为小的类型，向下转型
+		tcc.speak();
+	}
+}
+//猫的抽象类
+abstract class Cat{
+	private String name;
+	public Cat() {}
+	public Cat(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public abstract void eat();
+}
+//宠物猫类
+class PetCat extends Cat{
+	public PetCat(String name) {
+		super(name);//调用父类的构造方法
+	}
+	public void eat() {
+		System.out.println(this.getName()+":我爱吃猫粮");
+	}
+}
+//野猫类
+class WildCat extends Cat{
+	public WildCat(String name) {
+		super(name);
+	}
+	public void eat() {
+		System.out.println(this.getName()+":我爱吃小鸟");
+	}
+}
+//玩具猫
+class ToyCat extends Cat{
+	public ToyCat(String name) {
+		super(name);
+	}
+	public void eat() {
+		System.out.println(this.getName()+"玩具猫不吃饭");
+	}
+	public void speak() {
+		System.out.println(this.getName()+"我能说话");
+	}
+	
+}
