@@ -1,0 +1,32 @@
+/***********************************************
+ * 模板方法设计模式
+ * 定义一个操作中的算法的骨架
+ * 将一些可变部分的实现延迟到子类中
+ * 模板方法模式使得子类不改变算法结构即可重新定义某些方法的特定步骤
+ **********************************************/
+//public class test1{
+//	public static void main(String[] args) {//快捷键main
+//		UserManager um = new UserManager();
+//		um.action("admin", "add");//输出：  您执行的添加操作
+//		um.action("aaa", "add");//输出：   您没有管理员权限
+//	}
+//}
+//abstract class BaseManager{
+//	public void action(String name,String method) {
+//		if("admin".equals(name)) {
+//			execute(method);
+//		}else {
+//			System.out.println("您没有管理员权限");
+//		}
+//	}
+//	public abstract void execute(String method);
+//}
+//class UserManager extends BaseManager{
+//	public void execute(String method) {
+//		if("add".equals(method)) {
+//			System.out.println("您执行的添加操作");
+//		}else if("del".equals(method)) {
+//			System.out.println("您执行的删除操作");
+//		}
+//	}
+//}
